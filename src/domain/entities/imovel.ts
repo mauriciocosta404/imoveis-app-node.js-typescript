@@ -4,9 +4,10 @@ type ImovelProps = {
     name: string;
     price: number;
     photoCover: string;
-    photos?: string;
+    photos?: string[];
     bedroomNumber: number;
     bathroomNumber: number;
+    ownerId:string;
     createdAt ?: Date;
 };
 

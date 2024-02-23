@@ -5,15 +5,16 @@ type CreateImovelRequest = {
     name: string;
     price: number;
     photoCover: string;
-    photos?: string;
+    photos?: string[];
     bedroomNumber: number;
     bathroomNumber: number;
+    ownerId: string;
 };
 
 export class CreateImovelUseCase{
     constructor(private imovelRepository: ImovelRepository){}
 
-    async execute({name, price, photoCover, photos, bedroomNumber, bathroomNumber} : CreateImovelRequest){
+    async execute({name, price, photoCover, photos, bedroomNumber, bathroomNumber, ownerId} : CreateImovelRequest){
 
         const imovelAlreadyExists = await this.imovelRepository.findByName(name);
 
@@ -27,7 +28,8 @@ export class CreateImovelUseCase{
             photoCover,
             photos,
             bedroomNumber,
-            bathroomNumber
+            bathroomNumber,
+            ownerId
         });
 
         return createImovel;
